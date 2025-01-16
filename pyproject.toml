@@ -3,7 +3,7 @@ requires = ["pdm-backend"]
 build-backend = "pdm.backend"
 
 [project]
-name = "TeslaAPI"
+name = "MODELpY"
 dynamic = ["version"]
 authors = [{name="Cody M Sommer", email="bassmastacod@gmail.com"}]
 description = "Communicate with Tesla's official API"
@@ -38,8 +38,8 @@ classifiers = [
 ]
 
 [project.urls]
-Repository = "https://github.com/BassMastaCod/TeslaAPI.git"
-Issues = "https://github.com/BassMastaCod/TeslaAPI/issues"
+Repository = "https://github.com/BassMastaCod/MODELpY.git"
+Issues = "https://github.com/BassMastaCod/MODELpY/issues"
 
 [tool.pdm.version]
 source = "scm"

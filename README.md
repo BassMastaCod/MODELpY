@@ -1,4 +1,4 @@
-# TeslaAPI
+# MODELpY
 An unofficial Python library for Tesla's official [Fleet API](https://developer.tesla.com/docs/fleet-api/).
 
 ## Supported Functionality
@@ -21,10 +21,10 @@ An unofficial Python library for Tesla's official [Fleet API](https://developer.
 1. Get a hold of your client ID and refresh token
     - This is done by [Creating an Application](https://developer.tesla.com/docs/fleet-api/getting-started/what-is-fleet-api#step-2-create-an-application)
     - I won't include setup instructions here, but [TeslaMate](https://www.myteslamate.com/) makes it fairly painless
-2. Import the TeslaService (and any other service you'll be using) from `teslaapi`
+2. Import the TeslaService (and any other service you'll be using) from `modelpy`
     ```python
-    from teslaapi import TeslaService
-    from teslaapi.vehicle import VehicleService
+    from modelpy import TeslaService
+    from modelpy.vehicle import VehicleService
     ```
 3. Instantiate the TeslaService for your client ID
     ```python
@@ -36,8 +36,8 @@ An unofficial Python library for Tesla's official [Fleet API](https://developer.
     ```
 5. Now you are ready to interact with the API endpoints
     ```python
-    from teslaapi import TeslaService
-    from teslaapi.vehicle import VehicleService
+    from modelpy import TeslaService
+    from modelpy.vehicle import VehicleService
 
     tesla = TeslaService("abcd1234-5678-9abc-defg-hijklmnopqrst")
     vehicle_service = VehicleService(tesla)
