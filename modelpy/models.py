@@ -53,7 +53,7 @@ class ChargeState(Data):
     fast_charger_present: bool
     fast_charger_type: str
     ideal_battery_range: float
-    managed_charging_active: bool
+    managed_charging_active: Optional[bool]
     managed_charging_start_time: Optional[int]
     managed_charging_user_canceled: bool
     max_range_charge_counter: int
