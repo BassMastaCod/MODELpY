@@ -9,8 +9,8 @@ class Data:
         for prop, typing in self.__annotations__.items():
             value = data[prop]
             if isinstance(value, dict):
-                if isinstance(typing, Data):
-                    value = typing.__init__(value)
+                if issubclass(typing, Data):
+                    value = typing(value)
             setattr(self, prop, value)
 
     def __repr__(self):
