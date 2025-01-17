@@ -7,10 +7,10 @@ class Data:
     def __init__(self, data: dict):
         self._data = data
         for prop, typing in self.__annotations__.items():
-            value = data[prop]
+            value = data.get(prop)
             if isinstance(value, dict):
-                if isinstance(typing, Data):
-                    value = typing.__init__(value)
+                if issubclass(typing, Data):
+                    value = typing(value)
             setattr(self, prop, value)
 
     def __repr__(self):
@@ -53,7 +53,7 @@ class ChargeState(Data):
     fast_charger_present: bool
     fast_charger_type: str
     ideal_battery_range: float
-    managed_charging_active: bool
+    managed_charging_active: Optional[bool]
     managed_charging_start_time: Optional[int]
     managed_charging_user_canceled: bool
     max_range_charge_counter: int
