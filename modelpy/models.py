@@ -7,7 +7,7 @@ class Data:
     def __init__(self, data: dict):
         self._data = data
         for prop, typing in self.__annotations__.items():
-            value = data[prop]
+            value = data.get(prop)
             if isinstance(value, dict):
                 if issubclass(typing, Data):
                     value = typing(value)
