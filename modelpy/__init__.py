@@ -83,7 +83,9 @@ class TeslaService:
             endpoint = f"{endpoint}/{resource_id}"
         if path:
             endpoint = f"{endpoint}/{path}"
-        return requests.get(endpoint, headers=self.headers, params=params).json()["response"]
+        response = requests.get(endpoint, headers=self.headers, params=params)
+        response.raise_for_status()
+        return response.json()["response"]
 
     def post(self,
             endpoint: str,
@@ -102,7 +104,9 @@ class TeslaService:
             endpoint = f"{endpoint}/{resource_id}"
         if path:
             endpoint = f"{endpoint}/{path}"
-        return requests.post(endpoint, data=data, headers=self.headers, params=params).json()["response"]
+        response = requests.post(endpoint, data=data, headers=self.headers, params=params)
+        response.raise_for_status()
+        return response.json()["response"]
 
     def delete(self, endpoint: str, resource_id: str, path: Optional[str] = None) -> Any:
         """Conducts a DELETE request against the Tesla API.
@@ -115,4 +119,6 @@ class TeslaService:
         endpoint = f"{endpoint}/{resource_id}"
         if path:
             endpoint = f"{endpoint}/{path}"
-        return requests.delete(endpoint, headers=self.headers).json()["response"]
+        response = requests.delete(endpoint, headers=self.headers)
+        response.raise_for_status()
+        return response.json()["response"]
