@@ -4,8 +4,9 @@ from modelpy import TeslaService, base_url
 from modelpy.models import Vehicle, VehicleData, Driver, ChargingSites, Alert, ReleaseNote, ServiceData, ShareInvite, \
     Code, EligibleSubscriptions, EligibleUpgrades, WarrantyDetails, Config, FleetUpdateStatus, FleetStatus, TelemetryConfig
 
-vehicles_url = base_url + "/vehicles"
-vin_url = base_url + "/dx/vehicles"
+
+vehicles_url = base_url + "vehicles"
+vin_url = base_url + "dx/vehicles"
 
 
 class VehicleService:
