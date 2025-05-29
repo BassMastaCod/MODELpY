@@ -1,8 +1,17 @@
 from typing import Optional, Any, List
+from requests.exceptions import HTTPError
 
 from modelpy import TeslaService, base_url
 from modelpy.models import Vehicle, VehicleData, Driver, ChargingSites, Alert, ReleaseNote, ServiceData, ShareInvite, \
-    Code, EligibleSubscriptions, EligibleUpgrades, WarrantyDetails, Config, FleetUpdateStatus, FleetStatus, TelemetryConfig
+    Code, EligibleSubscriptions, EligibleUpgrades, WarrantyDetails, Config, FleetUpdateStatus, FleetStatus, \
+    TelemetryConfig
+
+
+class VehicleAsleepError(Exception):
+    """Raised when vehicle is unresponsive to commands"""
+
+    def __init__(self, vehicle_tag: str):
+        super().__init__(f"No response from vehicle {vehicle_tag}, it may be asleep")
 
 
 vehicles_url = base_url + "vehicles"
@@ -34,7 +43,12 @@ class VehicleService:
         """
         if not vehicle_tag:
             vehicle_tag = self.first_vin
-        return self.tesla_service.get(vehicles_url, vehicle_tag, path, **params)
+        try:
+            return self.tesla_service.get(vehicles_url, vehicle_tag, path, **params)
+        except HTTPError as e:
+            if e.response.status_code == 408:
+                raise VehicleAsleepError(vehicle_tag) from e
+            raise
 
     def _dx_get_for(self, vin: str, path: str) -> Any:
         """Shortcut function to conduct a GET request against a dx endpoint.
