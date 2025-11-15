@@ -1,3 +1,11 @@
+> ⚠️ **Project Status: Archived**
+>
+> This project, **MODELpY**, is no longer being actively maintained.
+> Development has ceased as I no longer own a Tesla, which was essential for testing and continued work on this project.
+>
+> The repository remains available for reference and historical interest.
+ Feel free to fork or build upon it if it's helpful to your own work!
+
 # MODELpY
 An unofficial Python library for Tesla's official [Fleet API](https://developer.tesla.com/docs/fleet-api/).
 
